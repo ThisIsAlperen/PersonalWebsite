@@ -1,0 +1,78 @@
+*{
+    box-sizing: border-box;
+}
+html{
+    font-size: 5px;
+}
+body{
+    font-size: 4rem;
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* <<<<<<<<<<<<<<<<---NAVBAR--->>>>>>>>>>>> */
+
+nav{
+    float: left;
+    width: 15%;
+    height: 100vh;
+    background-color: rgb(44, 43, 43);
+    display: inline;
+    border-right: black 10px solid;
+
+}
+#imgbottom{
+    color: black; height: 7px; width: 70%; margin: auto; opacity: 1;
+}
+#profilePicture{
+    width: 90%;
+    margin: 20px auto;
+
+}
+#profilePicture img{
+    object-fit: cover;
+    width: 100%;
+    padding-bottom: 20px;
+    border-bottom: 8px aliceblue solid;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+nav ul{
+    
+}
+#navLinks{
+    margin: 90px auto;
+    color: aliceblue;
+    text-align: center;
+    font-size: 6rem;
+}
+nav li{
+    font-size: 4rem;
+    color: aliceblue;
+    text-align: center;
+    
+    padding-bottom: 20px;
+    border-bottom: 2px solid aliceblue;
+    width:70%;
+    margin: 30px auto 10px;
+}
+
+/* <<<<<<<<<<<<<<<<---MAIN--->>>>>>>>>>>> */
+
+main{
+    display: inline;
+    float: right;
+    width: 85%;
+    
+    background-color: rgba(61, 148, 35, 0.884);
+    height: 100vh;
+
+    
+}
