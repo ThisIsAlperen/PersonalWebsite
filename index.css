@@ -17,6 +17,9 @@ a{
     text-decoration: none;
     color: inherit;
 }
+a:hover{
+    color: inherit;
+}
 ::-webkit-scrollbar{
     display: none;
 }
@@ -26,7 +29,7 @@ a{
 
 nav{
     float: left;
-    width: 15%;
+    width: 20%;
     height: 100vh;
     background-color: rgb(44, 43, 43);
     display: inline;
@@ -37,7 +40,7 @@ nav{
     color: black; height: 7px; width: 70%; margin: auto; opacity: 1;
 }
 #profilePicture{
-    width: 90%;
+    width: 70%;
     margin: 20px auto;
 
 }
@@ -50,11 +53,9 @@ nav{
     border-bottom-right-radius: 15px;
 }
 
-nav ul{
-    
-}
+
 #navLinks{
-    margin: 90px auto;
+    margin: 70px auto;
     color: aliceblue;
     text-align: center;
     font-size: 6rem;
@@ -63,11 +64,26 @@ nav li{
     font-size: 4rem;
     color: aliceblue;
     text-align: center;
-    
+    transition: 1s;
     padding-bottom: 20px;
+    padding-top: 20px;
     border-bottom: 2px solid aliceblue;
     width:70%;
-    margin: 30px auto 10px;
+    margin: 10px auto 10px;
+}
+#scrollLinks a{
+    transition: .3s;
+    padding: 10px 15px;
+    border-radius: 20px;
+}
+#scrollLinks a:hover{
+    background-color: rgba(240, 248, 255, 0.336);
+    color: black;
+    
+}
+.hover{
+    background-color: rgba(240, 248, 255, 0.336);
+    color: black;
 }
 
 /* <<<<<<<<<<<<<<<<---MAIN--->>>>>>>>>>>> */
@@ -75,7 +91,7 @@ nav li{
 main{
     display: inline;
     float: right;
-    width: 85%;
+    width: 80%;
     overflow: auto;
     background-color: rgba(61, 148, 35, 0.884);
     height: 100vh;
@@ -84,12 +100,31 @@ header{
 
 }
 section{
-    height: 100vh;
+    height: 716px;
     display: block;
     width: 100%;
+    
 }
 #homePage{
     background-color: aliceblue;
+}
+#homePicture{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    width: 100%;
+    height: 100%;
+   
+     
+}
+#homeProfile {
+    object-fit: cover;
+    width: 250px;
+    margin-bottom: 20px;
+}
+#homeJob{
+    padding-bottom: 100px;
 }
 #aboutPage{
     background-color: rgb(53, 152, 238);
