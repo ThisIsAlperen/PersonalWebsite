@@ -7,6 +7,7 @@ const Scroll = document.getElementById('scroll')
 const ScrollLinks = document.getElementById('scrollLinks')
 const Main = document.querySelector('main')
 
+const job = document.getElementById('homeJob').children[0]
 document.getElementById('homeLink').classList.add('hover')
 
 NodeList.prototype.forEach = HTMLCollection.prototype.forEach = Array.prototype.forEach;
@@ -56,56 +57,61 @@ Main.addEventListener("scroll", function () {
 setInterval(function () {
 
     var k = ['Web Developer', 'Freelancer']
-    var x = document.getElementById('homeJob').children[0]
-    if (k[0] === x.innerText) {
-        k = k[1].split('')
-        setTimeout(function () { yyy(k); }, 750)
-    } 
-    if (k[1] === x.innerText){
-        k = k[0].split('')
-        setTimeout(function () { yyy(k); }, 750)
+    
+    x = job.innerText
+    if (k[0] === x) {
+        y = k[1]
+
+    }else if (k[1] === x) {
+        y = k[0]
+    }else{
+        x = 'Freelancer'
+        y = 'Web Developer'
     }
-    x = x.innerText.split('')
-    x = x.reverse()
-    console.log(x)
-    setTimeout(function () { xxx(x); }, 0)
+
+    y = y.split('')
+    x = x.split('')
+   
+
+    setTimeout(function () { clearJob(x); }, 750)
+    setTimeout(function () { createJob(y); }, 1500)
+
+
 }, 4000)
 
-
-function xxx(x) {
-    console.log(x)
-    x.splice(0, 1)
-    if (x.length > 0) {
-        var y = ''
-        x.reverse()
-        for (i = 0; i < x.length; i++) {
-            y = y + x[i]
+function createJob(y) {
+    i = 0;
+    var k = ''
+    var writeJob = setInterval(function () {
+        console.log(y)
+        if(y[i] != undefined){
+            k = k + y[i]
         }
-        setTimeout(function () {
-            if (x.length == 1) {
-                y = ''
-                document.getElementById('homeJob').children[0].innerText = y
-
+        job.innerText = k
+        i++
+        console.log(i)
+        console.log(y.length)
+        if (i >= y.length) {
+            console.log('y')
+            clearInterval(writeJob)
+        }
+    }, 50)
+}
+function clearJob(x) {
+    var deleteJob = setInterval(function(){
+        x.pop()
+        console.log(x)
+        var m = ''
+        for(i=0;i<x.length;i++){
+            if(x[i] != undefined){
+                m = m+x[i]
             }
-        }, 100)
-
-        document.getElementById('homeJob').children[0].innerText = y
-        x.reverse()
-        setTimeout(function () { xxx(x); }, 50)
-    }
-    if(x.length == 0){
-        return;
-    }
-
+        }
+        job.innerText = m;
+        if (x.length == 0) {
+            console.log('x')
+            clearInterval(deleteJob)
+        }
+    },50)
 }
-function yyy(k) {
-    console.log(k)
-    y = document.getElementById('homeJob').children[0].innerText
-    y = y + k[0]
-    console.log(y)
-    k.splice(0, 1)
 
-
-    setTimeout(function () { xxx(k); }, 50)
-
-}
