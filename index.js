@@ -8,6 +8,10 @@ const ScrollLinks = document.getElementById('scrollLinks')
 const Main = document.querySelector('main')
 
 const job = document.getElementById('homeJob').children[0]
+
+const carousel = document.getElementById('portfolioLinks')
+const carouselLeft = document.getElementsByClassName('fa-angle-left')
+const carouselRight = document.getElementsByClassName('fa-angle-right')
 document.getElementById('homeLink').classList.add('hover')
 
 NodeList.prototype.forEach = HTMLCollection.prototype.forEach = Array.prototype.forEach;
@@ -16,9 +20,17 @@ myFunction()
 
 function myFunction() {
     Scroll.scrollIntoView()
+   
 }
 
+homePage.children[1].onclick = function(e){
 
+    $('html,main').animate({ //animate element that has scroll
+        scrollTop: 716 //for scrolling
+
+    }, 800);
+    e.preventDefault()
+}
 ScrollLinks.onclick = function (e) {
     var x = e.target.getAttribute('href')
     var y = document.getElementById(x)
@@ -51,67 +63,86 @@ Main.addEventListener("scroll", function () {
         document.getElementById('contactLink').classList.add('hover')
     }
 
-
 });
-
-setInterval(function () {
-
+setTimeout(changeJob,1000)
+function changeJob(){
     var k = ['Web Developer', 'Freelancer']
-    
-    x = job.innerText
+
+    var x = job.innerText
     if (k[0] === x) {
         y = k[1]
 
-    }else if (k[1] === x) {
+    } else if (k[1] === x) {
         y = k[0]
-    }else{
+    } else {
         x = 'Freelancer'
         y = 'Web Developer'
     }
 
     y = y.split('')
     x = x.split('')
-   
+
 
     setTimeout(function () { clearJob(x); }, 750)
     setTimeout(function () { createJob(y); }, 1500)
-
-
-}, 4000)
+}
+setInterval(changeJob, 4000)
 
 function createJob(y) {
     i = 0;
     var k = ''
     var writeJob = setInterval(function () {
-        console.log(y)
-        if(y[i] != undefined){
+
+        if (y[i] != undefined) {
             k = k + y[i]
         }
         job.innerText = k
         i++
-        console.log(i)
-        console.log(y.length)
+
         if (i >= y.length) {
-            console.log('y')
+
             clearInterval(writeJob)
         }
     }, 50)
 }
 function clearJob(x) {
-    var deleteJob = setInterval(function(){
+    var deleteJob = setInterval(function () {
         x.pop()
-        console.log(x)
+
         var m = ''
-        for(i=0;i<x.length;i++){
-            if(x[i] != undefined){
-                m = m+x[i]
+        for (i = 0; i < x.length; i++) {
+            if (x[i] != undefined) {
+                m = m + x[i]
             }
         }
         job.innerText = m;
         if (x.length == 0) {
-            console.log('x')
+
             clearInterval(deleteJob)
         }
-    },50)
+    }, 50)
 }
+//left - right carousel
+
+carouselLeft[0].onclick = function () {
+    var x = carousel.offsetLeft
+   
+    console.log(x)
+    if (x < 0) {
+        x = x + 570
+        console.log(x)
+        
+        carousel.style.left = x + 'px'
+    }
+}
+carouselRight[0].onclick = function () {
+    var x = carousel.offsetLeft
+  
+    if (x >= -570) {
+        x = x - 570
+        carousel.style.left = x + 'px'
+    }
+}
+
+
 
