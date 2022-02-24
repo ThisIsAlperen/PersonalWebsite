@@ -28,6 +28,7 @@ a:hover{
 }
 
 h2{
+    transition: .3s;
     font-size: 8rem;
     padding: 20px 40px;
     color: aliceblue;
@@ -190,6 +191,16 @@ section{
 /* <<<<<<<<<<<<<<<<---PORTFOLIOPAGE--->>>>>>>>>>>> */
 #portfolioPage{
     background-color: rgb(168, 57, 16);
+    position: relative;
+}
+#portfolioPage .fa-circle-xmark{
+    position: absolute;
+    font-size: 10rem;
+    right: 10px;
+}
+#jobDetail{
+    transition: .3s;
+    opacity: 0;
 }
 #carousel{
     position: relative;
@@ -197,6 +208,7 @@ section{
     overflow: hidden;
     height:298px;  
     margin: auto;
+    transition: .3s;
     
 }
 #portfolioLinks{
@@ -213,9 +225,6 @@ section{
     padding: 0;
    
 }
-#portfolioLinks:hover{
-    left: 0px;
-}
 
 #portfolioLinks li{
     background-size: contain;
@@ -224,6 +233,10 @@ section{
     background-color: azure;
     background-repeat: no-repeat;
     transition: .5s;
+}
+
+#portfolioLinks:hover{
+    left: 0px;
 }
 #portfolioLinks a{
     
@@ -243,6 +256,9 @@ section{
     
     opacity: .8;
 }
+#portfolioLinks span{
+    padding-bottom: 80px;
+} 
 #hangman{
     background-image: url(hangman.png);
 }
