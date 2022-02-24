@@ -2,6 +2,7 @@ const homePage = document.getElementById('homePage')
 const aboutPage = document.getElementById('aboutPage')
 const portfolioPage = document.getElementById('portfolioPage')
 const contactPage = document.getElementById('contactPage')
+const skills = document.getElementById('skillsPage')
 
 const Scroll = document.getElementById('scroll')
 const ScrollLinks = document.getElementById('scrollLinks')
@@ -189,29 +190,33 @@ setInterval(function () {
 //****************************************************/
 
 carousel.onclick = function (e) {
-    portfolioPage.children[1].style.opacity = '0';
-    portfolioPage.children[2].style.opacity = '0';
-    console.log(e.target.getAttribute('href'))
-    setTimeout(function () {
-        hide( portfolioPage.children[1])
-        hide( portfolioPage.children[2])
-        show(jobDetail)
-       
-    }, 350)
-    setTimeout(function () {
-        
-        jobDetail.style.opacity = '1'
-    }, 400)
+    x = e.target.getAttribute('href')
+    if (x !== null) {
+        portfolioPage.children[1].style.opacity = '0';
+        portfolioPage.children[2].style.opacity = '0';
+        console.log(document.getElementById('specificJob').style.backgroundImage = `url(${x})`)
+        setTimeout(function () {
+            hide(portfolioPage.children[1])
+            hide(portfolioPage.children[2])
+            show(jobDetail)
+
+        }, 350)
+        setTimeout(function () {
+
+            jobDetail.style.opacity = '1'
+        }, 400)
+    }
+
     e.preventDefault()
 }
 jobDetail.children[0].onclick = function (e) {
     jobDetail.style.opacity = '0';
-    
+
     setTimeout(function () {
-        show( portfolioPage.children[1])
-        show( portfolioPage.children[2])
+        show(portfolioPage.children[1])
+        show(portfolioPage.children[2])
         hide(jobDetail)
-       
+
     }, 350)
     setTimeout(function () {
         portfolioPage.children[1].style.opacity = '1'

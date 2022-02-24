@@ -32,6 +32,7 @@ h2{
     font-size: 8rem;
     padding: 20px 40px;
     color: aliceblue;
+   
 }
 /* <<<<<<<<<<<<<<<<---NAVBAR--->>>>>>>>>>>> */
 
@@ -107,7 +108,7 @@ main{
 }
 
 section{
-    padding: 20px;
+    padding: 30px 50px;
     height: 716px;
     display: block;
     width: 100%;
@@ -201,6 +202,13 @@ section{
 #jobDetail{
     transition: .3s;
     opacity: 0;
+    padding: 40px;
+}
+#specificJob{
+    height: 300px;
+    width: 500px;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 #carousel{
     position: relative;
@@ -250,7 +258,8 @@ section{
     align-items: center;
     transition: .5s;
     display: flex;
-
+    position: relative;
+    z-index: 10;
 }
 #portfolioLinks a:hover{
     
@@ -258,6 +267,8 @@ section{
 }
 #portfolioLinks span{
     padding-bottom: 80px;
+    z-index: -1;
+    position: absolute;
 } 
 #hangman{
     background-image: url(hangman.png);
@@ -298,6 +309,59 @@ section{
 #carousel .fa-angle-right{
     right: 10px;
     padding-left: 3px;
+}
+/* <<<<<<<<<<<<<<<<---SKILLSPAGE--->>>>>>>>>>>> */
+#skillsDetails{
+    display: flex;
+    justify-content: space-between;
+}
+#skillsPage p{
+    width: 45%;
+    
+}
+#skillsPage ul{
+    height: 70%;
+    width: 45%;
+    
+}
+#skillsPage li{
+    height: 80px;
+    padding-bottom: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items:  center;
+}
+#skillsPage span{
+    height: 18px;
+}
+#skillsPage li p{
+    margin:15px 0;
+    width: 100%;
+    border: 2px black solid;
+    height: 6px;
+    background-color: aliceblue;
+    position: relative;
+}
+#skillsPage li p span{
+    top: -1px;
+    left: 0;
+    display: inline-block;
+    position: absolute;
+    background-color: black;
+    height: 4px;
+}
+#css p span{
+    width: 85%;
+}
+#javaScript p span{
+    width: 90%;
+}
+#adobePhotoshop p span{
+    width: 80%;
+}
+#angular p span{
+    width: 60%;
 }
 /* <<<<<<<<<<<<<<<<---CONTACTPAGE--->>>>>>>>>>>> */
 #contactPage{
