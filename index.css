@@ -23,6 +23,9 @@ a:hover{
 ::-webkit-scrollbar{
     display: none;
 }
+.hide{
+    display: none!important;
+}
 
 h2{
     font-size: 8rem;
@@ -128,7 +131,39 @@ section{
     margin-bottom: 20px;
 }
 #homeJob{
+  
     padding-bottom: 100px;
+    display: flex;
+    overflow: hidden;
+    
+}
+#homeJob span{
+    flex:0 0 45px;
+    margin-left: 10px;   
+    overflow: hidden;
+    
+}
+#changeJob{
+    position: relative;
+    width: 147px; 
+    height: 30px;
+    overflow: hidden;
+    
+    transition: ease-out .6s;
+}
+#changeJob ul{
+    position: absolute;
+    display: flex;
+    width: 200px;
+
+}
+#changeJob li{
+    flex: 0 0 135px;
+    display: inline-block;
+    height: 30px;
+    position: absolute;
+    left: 0;
+    
 }
 #homePage i{
     position: absolute;

@@ -7,7 +7,11 @@ const Scroll = document.getElementById('scroll')
 const ScrollLinks = document.getElementById('scrollLinks')
 const Main = document.querySelector('main')
 
+// this is for the changing job with js
 const job = document.getElementById('homeJob').children[0]
+
+// this is for the changing job with css
+const job2 = document.getElementById('changeJob')
 
 const carousel = document.getElementById('portfolioLinks')
 const carouselLeft = document.getElementsByClassName('fa-angle-left')
@@ -16,6 +20,12 @@ document.getElementById('homeLink').classList.add('hover')
 
 NodeList.prototype.forEach = HTMLCollection.prototype.forEach = Array.prototype.forEach;
 
+function hide(x){
+    x.classList.add('hide')
+}
+function show(x){
+    x.classList.remove('hide')
+}
 myFunction()
 
 function myFunction() {
@@ -64,7 +74,9 @@ Main.addEventListener("scroll", function () {
     }
 
 });
-setTimeout(changeJob,1000)
+// ********vvvv This Part is for the changing the job vvvv******//
+// ************* I found a smoother way with css **********//
+//setTimeout(changeJob,1000)
 function changeJob(){
     var k = ['Web Developer', 'Freelancer']
 
@@ -86,7 +98,7 @@ function changeJob(){
     setTimeout(function () { clearJob(x); }, 750)
     setTimeout(function () { createJob(y); }, 1500)
 }
-setInterval(changeJob, 4000)
+//setInterval(changeJob, 4000)
 
 function createJob(y) {
     i = 0;
@@ -122,6 +134,7 @@ function clearJob(x) {
         }
     }, 50)
 }
+// *********^^^^ This Part is for the changing the job^^^^^********//
 //left - right carousel
 
 carouselLeft[0].onclick = function () {
@@ -143,6 +156,36 @@ carouselRight[0].onclick = function () {
         carousel.style.left = x + 'px'
     }
 }
-
+// This is the new part for the changing the job
+var i;
+setInterval(function(){
+  
+    if(i == undefined){
+        i = 0
+    }
+    job2.style.width = '5px'
+    setTimeout(function(){
+        if(i == 0){
+            hide(job2.children[0].children[0])
+            job2.style.width = '133px'
+            show(job2.children[0].children[1])
+        }
+        if(i == 1){
+            hide(job2.children[0].children[1])
+            job2.style.width = '100px'
+            show(job2.children[0].children[2])
+        }
+        if(i == 2){
+            hide(job2.children[0].children[2])
+            job2.style.width = '147px'
+            show(job2.children[0].children[0])
+        }
+        i++
+    },800)
+    if(i>2){
+        i = 0
+    }
+},2500)
+//****************************************************/
 
 
