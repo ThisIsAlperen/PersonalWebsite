@@ -39,9 +39,7 @@ h2 {
     transition: .3s;
     font-size: 8rem;
     padding: 20px 40px 20px 0;
-    color: aliceblue;
-
-
+    color: rgb(34, 34, 34);
 }
 
 /* <<<<<<<<<<<<<<<<---NAVBAR--->>>>>>>>>>>> */
@@ -125,20 +123,24 @@ main {
     overflow: auto;
     background-color: rgba(61, 148, 35, 0.884);
     height: 100vh;
-
 }
 
+#scroll section:nth-child(even){
+    background-color: rgb(227, 232, 236);
+}
+#scroll section:nth-child(odd){
+    background-color: aliceblue;
+}
 section {
     padding: 30px 50px;
     height: 716px;
     display: block;
     width: 100%;
-
 }
 
 /* <<<<<<<<<<<<<<<<---HOMEPAGE--->>>>>>>>>>>> */
 #homePage {
-    background-color: aliceblue;
+    
     position: relative;
 }
 
@@ -231,7 +233,7 @@ section {
 
 /* <<<<<<<<<<<<<<<<---ABOUTPAGE--->>>>>>>>>>>> */
 #aboutPage {
-    background-color: rgb(53, 152, 238);
+    
 }
 #aboutDetails{
     display: flex;
@@ -274,7 +276,7 @@ section {
 
 /* <<<<<<<<<<<<<<<<---PORTFOLIOPAGE--->>>>>>>>>>>> */
 #portfolioPage {
-    background-color: rgb(168, 57, 16);
+   
     position: relative;
 }
 
@@ -302,7 +304,7 @@ section {
     width: 1070px;
     overflow: hidden;
     height: 298px;
-    margin: auto;
+    
     transition: .3s;
 
 }
@@ -319,7 +321,7 @@ section {
     transition: 1s;
     justify-content: space-between;
     padding: 0;
-
+    z-index: 2;
 }
 
 #portfolioLinks li {
@@ -402,6 +404,7 @@ section {
 #carousel .fa-angle-left {
     left: 10px;
     padding-right: 3px;
+    z-index: 5;
 }
 
 #carousel .fa-angle-right {
@@ -475,7 +478,7 @@ section {
 
 /* <<<<<<<<<<<<<<<<---CONTACTPAGE--->>>>>>>>>>>> */
 #contactPage {
-    background-color: rgb(228, 228, 228);
+   
 }
 #contactDetails{
     display: flex;
@@ -498,13 +501,13 @@ section {
     align-items: center;
 }
 #contactInfo p{
-
     width: 100%;
 }
 #contactLinks{
+    padding: 0;
     display: flex;
     font-size: 7rem;
-    width: 90px;
+    width: 80px;
     justify-content: space-between;
 }
 
