@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    -webkit-box-sizing:border-box;
 }
 
 html {
@@ -37,8 +38,9 @@ a:hover {
 h2 {
     transition: .3s;
     font-size: 8rem;
-    padding: 20px 40px;
+    padding: 20px 40px 20px 0;
     color: aliceblue;
+
 
 }
 
@@ -156,7 +158,6 @@ section {
 }
 
 #homeJob {
-
     padding-bottom: 100px;
     display: flex;
     overflow: hidden;
@@ -231,6 +232,43 @@ section {
 /* <<<<<<<<<<<<<<<<---ABOUTPAGE--->>>>>>>>>>>> */
 #aboutPage {
     background-color: rgb(53, 152, 238);
+}
+#aboutDetails{
+    display: flex;
+    justify-content: space-between;
+}
+#aboutDetails h3{
+    
+    font-size: 6rem;
+    margin-bottom: 20px;
+    width: 100%;
+}
+#aboutDetails img{
+    width: 30%;
+}
+#aboutMe{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 65%;
+    padding: 10px;
+}
+#aboutInfo{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    height: 100px;
+}
+#aboutInfo span{
+    width: 50%;
+}
+#aboutMe button{
+    width: 150px;
+    height: 50px;
+    margin: 10px 10px 10px 0;
+    border-radius: 30px;
+
 }
 
 
@@ -437,5 +475,71 @@ section {
 
 /* <<<<<<<<<<<<<<<<---CONTACTPAGE--->>>>>>>>>>>> */
 #contactPage {
-    background-color: rgb(16, 129, 92);
+    background-color: rgb(228, 228, 228);
+}
+#contactDetails{
+    display: flex;
+    justify-content: space-between;
+    
+}
+#contactDetails h3{
+    display: block;
+    font-size: 6rem;
+    margin-bottom: 20px;
+    width: 100%;
+}
+#contactInfo{
+
+    width: 45%;
+    padding: 10px;   
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+#contactInfo p{
+
+    width: 100%;
+}
+#contactLinks{
+    display: flex;
+    font-size: 7rem;
+    width: 90px;
+    justify-content: space-between;
+}
+
+
+#sendMessage{
+    
+    width: 45%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: center;
+    height: 400px;
+}
+
+#sendMessage input{
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    width: 45%;
+    border: none;
+    background-color: inherit;
+    border-bottom: 1px solid black;
+}
+#sendMessage input:focus{
+    outline: none;
+    border-bottom-width:2px ;
+}
+#sendMessage textarea{
+    height: 130px;
+    width: 100%;
+    margin-bottom: 10px;
+    border: none;
+    background-color: inherit;
+    border-bottom: 1px solid black;
+}
+#sendMessage textarea:focus{
+    outline: none;
 }
