@@ -7,6 +7,7 @@ const skills = document.getElementById('skillsPage')
 const Scroll = document.getElementById('scroll')
 const ScrollLinks = document.getElementById('scrollLinks')
 const Main = document.querySelector('main')
+const homeDownArrow = document.getElementById('homeDownArrow')
 
 // this is for the changing job with js
 const job = document.getElementById('homeJob').children[0]
@@ -224,4 +225,44 @@ jobDetail.children[0].onclick = function (e) {
     }, 400)
     e.preventDefault()
 }
+//home Page Down Arrows
+//Starts at the beginning
+var homeArrow = setInterval(homeArrow2, 5000)
+// If mouse enter the arrows, stops
+homeDownArrow.addEventListener('mouseenter', function () {
+    console.log('enter')
+    clearInterval(homeArrow)
+})
+//If mouse leaves the arrows, continue
+homeDownArrow.addEventListener('mouseleave', function () {
+    console.log('leave')
+    setTimeout(homeArrow2,1000)
+    homeArrow = setInterval(homeArrow2, 5000) // creates interval again
+})
 
+function homeArrow2() {
+    x = homeDownArrow
+    x.style.height = '130px'
+    x.style.transition = '.4s '
+    setTimeout(function () {
+        x.style.transition = '.15s ease-in'
+        x.style.height = '90px'
+    }, 400)
+    setTimeout(function () {
+        x.style.transition = '.2s ease-out '
+        x.style.height = '115px'
+    }, 580)
+    setTimeout(function () {
+        x.style.transition = '.15s ease-in'
+        x.style.height = '90px'
+    },800)
+    setTimeout(function () {
+        x.style.transition = '.15s ease-out'
+        x.style.height = '96px'
+    },970)
+    setTimeout(function () {
+        x.style.transition = '.1s ease-in'
+        x.style.height = '90px'
+    },1150)
+    x.style.transition = '.3s'
+}
