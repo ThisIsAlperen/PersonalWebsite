@@ -31,16 +31,16 @@ function show(x) {
 myFunction()
 
 function myFunction() {
-    Scroll.scrollIntoView()
+    Scroll.scrollIntoView({ behavior: "smooth" })
 
 }
 
-homePage.children[1].onclick = function (e) {
-
+homePage.children[2].onclick = function (e) {
+    console.log('dsadsa')
     $('html,main').animate({ //animate element that has scroll
         scrollTop: 716 //for scrolling
 
-    }, 800);
+    }, 100);
     e.preventDefault()
 }
 ScrollLinks.onclick = function (e) {
@@ -50,7 +50,7 @@ ScrollLinks.onclick = function (e) {
     $('html,main').animate({ //animate element that has scroll
         scrollTop: y.offsetTop //for scrolling
 
-    }, 1000);
+    }, 100);
     e.preventDefault()
 }
 Main.addEventListener("scroll", function () {
@@ -195,24 +195,24 @@ carousel.onclick = function (e) {
     x = e.target.getAttribute('href')
     var title = e.target.getAttribute('title')
     document.getElementById('specificJob').children[0].innerText = title
-    
+
     document.getElementById('jobDetailText').children.forEach(child => {
-        
-        if(child.getAttribute('name') == x){
+
+        if (child.getAttribute('name') == x) {
             child.classList.remove('hide')
-        }else{
+        } else {
             child.classList.add('hide')
         }
-        
+
     });
     document.getElementById('jobDetailFeatures').children.forEach(child => {
-        
-        if(child.getAttribute('name') == x){
+
+        if (child.getAttribute('name') == x) {
             child.classList.remove('hide')
-        }else{
+        } else {
             child.classList.add('hide')
         }
-        
+
     });
     if (x !== null) {
         portfolioPage.children[1].style.opacity = '0';
@@ -287,4 +287,20 @@ function homeArrow2() {
         x.style.height = '90px'
     }, 1150)
     x.style.transition = '.3s'
+}
+
+// 
+
+document.getElementById('navButton').onclick = function (e) {
+    var x = document.getElementsByTagName('nav')[0]
+    console.log(x.classList[1])
+    if (x.classList[1] == 'open') {
+
+        x.classList.remove('open')
+    } else {
+        x.classList.add('open')
+    
+    }
+
+
 }
