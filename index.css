@@ -41,7 +41,12 @@ h2 {
     padding: 20px 40px 20px 0;
     color: rgb(34, 34, 34);
 }
-
+h3{
+    display: block;
+    font-size: 6rem;
+    margin-bottom: 20px;
+    width: 100%;
+}
 /* <<<<<<<<<<<<<<<<---NAVBAR--->>>>>>>>>>>> */
 
 nav {
@@ -239,12 +244,7 @@ section {
     display: flex;
     justify-content: space-between;
 }
-#aboutDetails h3{
-    
-    font-size: 6rem;
-    margin-bottom: 20px;
-    width: 100%;
-}
+
 #aboutDetails img{
     width: 30%;
 }
@@ -276,7 +276,7 @@ section {
 
 /* <<<<<<<<<<<<<<<<---PORTFOLIOPAGE--->>>>>>>>>>>> */
 #portfolioPage {
-   
+   height: 600px;
     position: relative;
 }
 
@@ -293,18 +293,32 @@ section {
 }
 
 #specificJob {
+   display: flex;
+   justify-content: space-between;
+   flex-wrap: wrap;
+}
+#jobDetailPicture{
     height: 300px;
     width: 500px;
     background-size: contain;
     background-repeat: no-repeat;
 }
-
+#jobDetailText{
+    width: 470px;
+}
+#jobDetailFeatures div{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100px;
+    margin-top: 20px;
+}
 #carousel {
     position: relative;
     width: 1070px;
     overflow: hidden;
     height: 298px;
-    
     transition: .3s;
 
 }
@@ -413,6 +427,9 @@ section {
 }
 
 /* <<<<<<<<<<<<<<<<---SKILLSPAGE--->>>>>>>>>>>> */
+#skillsPage{
+    height: 600px;
+}
 #skillsDetails {
     display: flex;
     justify-content: space-between;
@@ -485,12 +502,7 @@ section {
     justify-content: space-between;
     
 }
-#contactDetails h3{
-    display: block;
-    font-size: 6rem;
-    margin-bottom: 20px;
-    width: 100%;
-}
+
 #contactInfo{
 
     width: 45%;
@@ -545,4 +557,11 @@ section {
 }
 #sendMessage textarea:focus{
     outline: none;
+}
+/* <<<<<<<<<<<<<<<<---FOOTER--->>>>>>>>>>>> */
+
+footer{
+    width: 100%;
+    height: 300px;
+    background-color: darkgray;
 }

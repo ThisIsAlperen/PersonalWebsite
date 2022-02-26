@@ -191,11 +191,33 @@ setInterval(function () {
 //****************************************************/
 
 carousel.onclick = function (e) {
+    e.preventDefault()
     x = e.target.getAttribute('href')
+    var title = e.target.getAttribute('title')
+    document.getElementById('specificJob').children[0].innerText = title
+    
+    document.getElementById('jobDetailText').children.forEach(child => {
+        
+        if(child.getAttribute('name') == x){
+            child.classList.remove('hide')
+        }else{
+            child.classList.add('hide')
+        }
+        
+    });
+    document.getElementById('jobDetailFeatures').children.forEach(child => {
+        
+        if(child.getAttribute('name') == x){
+            child.classList.remove('hide')
+        }else{
+            child.classList.add('hide')
+        }
+        
+    });
     if (x !== null) {
         portfolioPage.children[1].style.opacity = '0';
         portfolioPage.children[2].style.opacity = '0';
-        console.log(document.getElementById('specificJob').style.backgroundImage = `url(${x})`)
+        console.log(document.getElementById('jobDetailPicture').style.backgroundImage = `url(${x}.png)`)
         setTimeout(function () {
             hide(portfolioPage.children[1])
             hide(portfolioPage.children[2])
@@ -208,7 +230,7 @@ carousel.onclick = function (e) {
         }, 400)
     }
 
-    e.preventDefault()
+
 }
 jobDetail.children[0].onclick = function (e) {
     jobDetail.style.opacity = '0';
@@ -236,7 +258,7 @@ homeDownArrow.addEventListener('mouseenter', function () {
 //If mouse leaves the arrows, continue
 homeDownArrow.addEventListener('mouseleave', function () {
     console.log('leave')
-    setTimeout(homeArrow2,1000)
+    setTimeout(homeArrow2, 1000)
     homeArrow = setInterval(homeArrow2, 5000) // creates interval again
 })
 
@@ -255,14 +277,14 @@ function homeArrow2() {
     setTimeout(function () {
         x.style.transition = '.15s ease-in'
         x.style.height = '90px'
-    },800)
+    }, 800)
     setTimeout(function () {
         x.style.transition = '.15s ease-out'
         x.style.height = '96px'
-    },970)
+    }, 970)
     setTimeout(function () {
         x.style.transition = '.1s ease-in'
         x.style.height = '90px'
-    },1150)
+    }, 1150)
     x.style.transition = '.3s'
 }
