@@ -32,11 +32,16 @@ myFunction()
 
 function myFunction() {
     Scroll.scrollIntoView({ behavior: "smooth" })
-
+    
 }
 
+document.getElementsByTagName('h2').forEach(child => {
+    child.innerText = child.innerText.toUpperCase()
+})
+document.getElementsByTagName('h3').forEach(child => {
+    child.innerText = child.innerText.toUpperCase()
+})
 homePage.children[2].onclick = function (e) {
-    console.log('dsadsa')
     $('html,main').animate({ //animate element that has scroll
         scrollTop: 716 //for scrolling
 
@@ -53,26 +58,39 @@ ScrollLinks.onclick = function (e) {
     }, 100);
     e.preventDefault()
 }
-Main.addEventListener("scroll", function () {
+
+
+window.addEventListener("scroll", function () {
+    
     ScrollLinks.children.forEach(child => {
         child.children[0].classList = ''
     });
-
-    if (Main.scrollTop < aboutPage.offsetTop - 200) {
+    ScrollLinks.children.forEach(child => {
+        child.classList = ''
+    });
+    
+    
+    if (this.window.pageYOffset < aboutPage.offsetTop - 200) {
 
         document.getElementById('homeLink').classList.add('hover')
+        document.getElementById('homeLink').parentElement.classList.add('hover')
     }
-    if (Main.scrollTop > aboutPage.offsetTop - 200 && Main.scrollTop < portfolioPage.offsetTop - 200) {
+    if (this.window.pageYOffset > aboutPage.offsetTop - 200 && this.window.pageYOffset < portfolioPage.offsetTop - 200) {
 
 
         document.getElementById('aboutLink').classList.add('hover')
+        document.getElementById('aboutLink').parentElement.classList.add('hover')
 
     }
-    if (Main.scrollTop > portfolioPage.offsetTop - 200 && Main.scrollTop < contactPage.offsetTop - 200) {
+    if (this.window.pageYOffset > portfolioPage.offsetTop - 200 && this.window.pageYOffset< contactPage.offsetTop - 200) {
         document.getElementById('portfolioLink').classList.add('hover')
+        document.getElementById('portfolioLink').parentElement.classList.add('hover')
+
     }
-    if (Main.scrollTop > contactPage.offsetTop - 200) {
+    if (this.window.pageYOffset > contactPage.offsetTop - 200) {
         document.getElementById('contactLink').classList.add('hover')
+        document.getElementById('contactLink').parentElement.classList.add('hover')
+
     }
 
 });
@@ -139,25 +157,25 @@ function clearJob(x) {
 // *********^^^^ This Part is for the changing the job^^^^^********//
 //left - right carousel
 
-carouselLeft[0].onclick = function () {
-    var x = carousel.offsetLeft
+// carouselLeft[0].onclick = function () {
+//     var x = carousel.offsetLeft
 
-    console.log(x)
-    if (x < 0) {
-        x = x + 570
-        console.log(x)
+//     console.log(x)
+//     if (x < 0) {
+//         x = x + 570
+//         console.log(x)
 
-        carousel.style.left = x + 'px'
-    }
-}
-carouselRight[0].onclick = function () {
-    var x = carousel.offsetLeft
+//         carousel.style.left = x + 'px'
+//     }
+// }
+// carouselRight[0].onclick = function () {
+//     var x = carousel.offsetLeft
 
-    if (x >= -570) {
-        x = x - 570
-        carousel.style.left = x + 'px'
-    }
-}
+//     if (x >= -570) {
+//         x = x - 570
+//         carousel.style.left = x + 'px'
+//     }
+// }
 // This is the new part for the changing the job
 var i;
 setInterval(function () {
@@ -191,13 +209,13 @@ setInterval(function () {
 //****************************************************/
 
 carousel.onclick = function (e) {
+    console.log(e.target)
     e.preventDefault()
     x = e.target.getAttribute('href')
     var title = e.target.getAttribute('title')
     document.getElementById('specificJob').children[0].innerText = title
 
     document.getElementById('jobDetailText').children.forEach(child => {
-
         if (child.getAttribute('name') == x) {
             child.classList.remove('hide')
         } else {
@@ -214,10 +232,14 @@ carousel.onclick = function (e) {
         }
 
     });
-    if (x !== null) {
+
+    if (x !== null) {//to make sure that user clicked to a picture not any point (will be changed)
         portfolioPage.children[1].style.opacity = '0';
         portfolioPage.children[2].style.opacity = '0';
-        console.log(document.getElementById('jobDetailPicture').style.backgroundImage = `url(${x}.png)`)
+        document.getElementById('jobDetailPicture').style.backgroundImage = `url(${x}.png)`
+
+            
+
         setTimeout(function () {
             hide(portfolioPage.children[1])
             hide(portfolioPage.children[2])

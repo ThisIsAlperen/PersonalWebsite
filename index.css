@@ -13,7 +13,6 @@ body {
     color: #888;
 }
 
-
 li {
     list-style: none;
 }
@@ -79,18 +78,16 @@ h3 {
         opacity: 1 !important;
 
     }
-    #portfolioLinks{
-        flex-wrap: wrap!important;
+
+    #portfolioLinks {
+        flex-wrap: wrap !important;
         width: 100%;
-        max-width: 1050px!important;
+        max-width: 1050px !important;
     }
-    #carousel{
-        height: 570px!important;
-        min-width: 400px;
-    }
-    #portfolioPage{
-        height: 800px!important;
-    }
+
+   
+
+
 }
 
 /* <<<<<<<<<<<<<<<<---NAVBAR--->>>>>>>>>>>> */
@@ -106,45 +103,34 @@ nav {
     z-index: 1000;
 }
 
-#imgbottom {
-    color: black;
-    height: 7px;
-    width: 70%;
-    margin: auto;
-    opacity: 1;
-}
-
 #profilePicture {
     width: 70%;
     margin: 20px auto;
-
+    background-color: #eee;
 }
 
 #profilePicture img {
     object-fit: cover;
     width: 100%;
-    padding-bottom: 20px;
-    border-bottom: 8px aliceblue solid;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
 }
 
-
+/* Github link at the bottom of the navbar*/
 #navLinks {
     margin: 70px auto;
-    color: aliceblue;
     text-align: center;
     font-size: 6rem;
 }
 
+/* Page attributes at the nav bar */
 nav li {
-    font-size: 4rem;
     text-align: center;
     transition: 1s;
     padding: 20px 0px;
-    border-bottom: 2px solid aliceblue;
+    border-bottom: 2px solid #888;
     width: 70%;
-    margin: 10px auto 10px;
+    margin: 10px auto;
 }
 
 #scrollLinks a {
@@ -154,13 +140,12 @@ nav li {
 }
 
 #scrollLinks a:hover {
-    background-color: rgba(240, 248, 255, 0.336);
-    color: black;
+    color: #eee;
 }
 
 .hover {
-    background-color: rgba(240, 248, 255, 0.336);
-    color: black;
+    border-color: #eee;
+    color: #eee;
 }
 
 /* <<<<<<<<<<<<<<<<---MAIN--->>>>>>>>>>>> */
@@ -328,26 +313,27 @@ section {
 
 #aboutDetails img {
     width: 100%;
+    padding: 0 10px;
 }
 
 #aboutMe {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     flex-wrap: wrap;
-
-    padding: 10px;
+    padding: 0 10px;
 }
 
 #aboutInfo {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    height: 100px;
+    padding: 10px 0 30px 0;
 }
 
 #aboutInfo span {
     width: 50%;
+    display: inline-block;
+    padding: 10px 0;
 }
 
 #aboutMe button {
@@ -360,7 +346,6 @@ section {
 
 /* <<<<<<<<<<<<<<<<---PORTFOLIOPAGE--->>>>>>>>>>>> */
 #portfolioPage {
-    height: 600px;
     position: relative;
 }
 
@@ -369,7 +354,7 @@ section {
     font-size: 10rem;
     right: 10px;
 }
-
+/* ========================================= */
 #jobDetail {
     transition: .3s;
     opacity: 0;
@@ -383,15 +368,31 @@ section {
 }
 
 #jobDetailPicture {
-    height: 285px;
-    width: 475px;
-    background-size: contain;
-    background-repeat: no-repeat;
+    min-height: 200px;
+    height: auto;
+    position: relative;
+    overflow: hidden;
+  height: 240px;
+
+}
+#carousel{
+    display: flex;
+    width: 500px;
+    flex-wrap: nowrap;
+    flex: content;
+    transition: 2s;
+    position: absolute;
+    left: -500px;
+    
+}
+#carousel img{
+    width: 500px;
+    min-height: 200px;
+    height: auto;
+    border: 10px solid #fff;
+    
 }
 
-#jobDetailText {
-    width: 470px;
-}
 
 #jobDetailFeatures div {
     width: 100%;
@@ -401,26 +402,13 @@ section {
     height: 100px;
     margin-top: 20px;
 }
-
-#carousel {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    height: 298px;
-    transition: .3s;
-
-}
+/* ///////////////////////////////////////////////////////// */
 
 #portfolioLinks {
-    top: 0px;
-    left: 0;
     margin: 0;
-    position: absolute;
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     flex: content;
-    max-width: 2100px;
-    width: 240%;
     transition: 1s;
     justify-content: space-between;
     padding: 0;
@@ -429,10 +417,14 @@ section {
 
 #portfolioLinks li {
     background-size: contain;
-    flex: 0 0 475px;
-    height: 285px;
+    height: fit-content;
     background-repeat: no-repeat;
     transition: .5s;
+    border: 10px solid transparent;
+    position: relative;
+}
+#portfolioLinks li img{
+    width: 100%;
 }
 
 #portfolioLinks:hover {
@@ -440,9 +432,9 @@ section {
 }
 
 #portfolioLinks a {
-
-    flex: 0 0 475px;
-    height: 285px;
+    width: 100%;
+    height: 100%;
+    top: 0;
     opacity: 0;
     background-color: black;
     color: white;
@@ -451,7 +443,7 @@ section {
     align-items: center;
     transition: .5s;
     display: flex;
-    position: relative;
+    position: absolute;
     z-index: 10;
 }
 
@@ -466,56 +458,8 @@ section {
     position: absolute;
 }
 
-#hangman {
-    background-image: url(hangman.png);
-}
-
-#tictactoe {
-    background-image: url(tictactoe.png);
-}
-
-#calculator {
-    background-image: url(calculator.png);
-}
-
-#maze {
-    background-image: url(maze.png);
-}
-
-#carousel i {
-    position: absolute;
-    transform: translate(0, -50%);
-    top: 50%;
-    z-index: 10;
-    font-size: 6rem;
-    color: aliceblue;
-    width: 40px;
-    height: 40px;
-    text-align: center;
-    border-radius: 50%;
-    padding-top: 5px;
-    transition: .4s;
-}
-
-#carousel i:hover {
-
-    background-color: aliceblue;
-    color: black;
-}
-
-#carousel .fa-angle-left {
-    left: 10px;
-    padding-right: 3px;
-    z-index: 5;
-}
-
-#carousel .fa-angle-right {
-    right: 10px;
-    padding-left: 3px;
-}
 
 /* <<<<<<<<<<<<<<<<---SKILLSPAGE--->>>>>>>>>>>> */
-#skillsPage {}
 
 #skillsDetails {
     display: flex;
@@ -523,12 +467,8 @@ section {
     flex-wrap: wrap;
 }
 
-#skillsPage p {}
-
 #skillsPage ul {
     height: 70%;
-
-
 }
 
 #skillsPage li {
