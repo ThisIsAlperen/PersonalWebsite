@@ -388,7 +388,7 @@ section {
 
 #jobDetailPicture {
     min-height: 200px;
-    height: auto;
+    
     position: relative;
     overflow: hidden;
     max-width: 600px;
@@ -437,8 +437,6 @@ section {
     transition: 2s;
     position: absolute;
     left: 0;
-
-
 }
 
 #carousel img {
@@ -448,7 +446,31 @@ section {
     padding: 10px;
 
 }
+#pointer{
+    display: flex;
+    position: absolute;
+    bottom: -5px;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-end;
+    
+}
 
+#pointer i{
+   font-size: 2rem;
+   position: relative;
+   height: 0px;
+
+}
+.on{
+    color: black ;
+}
+.off{
+    color: rgb(201, 201, 201);
+}
+#pointer i:hover{
+    color: #000000;
+}
 
 #jobDetailFeatures div {
     width: 100%;

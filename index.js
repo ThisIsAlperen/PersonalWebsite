@@ -21,7 +21,9 @@ const carousel = document.getElementById('carousel')
 const carouselLeft = document.getElementsByClassName('fa-angle-left')
 const carouselRight = document.getElementsByClassName('fa-angle-right')
 
+const pointer = document.getElementById('pointer')
 let slide = 0;
+
 
 // for each method can be used for html collections
 NodeList.prototype.forEach = HTMLCollection.prototype.forEach = Array.prototype.forEach;
@@ -32,7 +34,7 @@ function hide(x) {
 function show(x) {
     x.classList.remove('hide')
 }
-
+carousel.innerHTML = ''
 // Uppercase the titles
 document.getElementsByTagName('h2').forEach(child => {
     child.innerText = child.innerText.toUpperCase()
@@ -68,11 +70,17 @@ window.addEventListener('resize', function () {
         y.classList.add('fa-bars')
         x.classList.remove('open')
     }
-    Slide()
+
+    if (carousel.innerHTML != '') {
+        Slide()
+        carouselWidth()
+    }
+
+
 })
 // hover the navbar links when scroll
 window.addEventListener("scroll", function () {
-
+    carouselWidth()
     ScrollLinks.children.forEach(child => {
         child.children[0].classList = ''
     });
@@ -110,7 +118,7 @@ window.addEventListener("scroll", function () {
 //setTimeout(changeJob,1000)
 function changeJob() {
     var k = ['Web Developer', 'Freelancer']
-
+    var y;
     var x = job.innerText
     if (k[0] === x) {
         y = k[1]
@@ -174,21 +182,36 @@ carouselLeft[0].onclick = function () {
     }
 }
 carouselRight[0].onclick = function () {
-    if (slide < 2) {
+
+    if (slide < carousel.children.length - 1) {
         Slide(1)
     }
 }
+pointer.onclick = function(e){
+    e.preventDefault()
+   
+    if(e.target.classList.length > 0){
+        var x = Number(e.target.getAttribute('number'))
+        console.log(x)
+    }
+    slide = x;
+    Slide()
+}
 function Slide(x) {
+    
     var y = carousel.children[slide].offsetWidth
     if (x == undefined) {
         x = 0;
     }
     slide = slide + x
-    console.log(slide)
-    console.log(y)
-   
+    pointer.children.forEach(function(child){
+        child.classList.remove('on')
+        child.classList.add('off')
+    })
+    pointer.children[slide].classList.add('on')
+    pointer.children[slide].classList.remove('off')
     //carousel.style.left = 
-    carousel.style.left = `-${y*slide}px`
+    carousel.style.left = `-${y * slide}px`
 }
 // This is the new part for the changing the job
 var i;
@@ -223,12 +246,16 @@ setInterval(function () {
 //****************************************************/
 // open the details of a portfolio item
 portfolioLinks.onclick = function (e) {
-    console.log(e.target)
-    e.preventDefault()
-    x = e.target.getAttribute('href')
-    var title = e.target.getAttribute('title')
-    document.getElementById('specificJob').children[0].innerText = title
 
+    carousel.innerHTML = ''
+    e.preventDefault()
+
+    var x = e.target.getAttribute('href')
+    var title = e.target.getAttribute('title')
+    createImg(x)
+
+    document.getElementById('specificJob').children[0].innerText = title
+    // get the specific text by name
     document.getElementById('jobDetailText').children.forEach(child => {
         if (child.getAttribute('name') == x) {
             child.classList.remove('hide')
@@ -237,6 +264,7 @@ portfolioLinks.onclick = function (e) {
         }
 
     });
+    // get the specific feature list by name
     document.getElementById('jobDetailFeatures').children.forEach(child => {
 
         if (child.getAttribute('name') == x) {
@@ -251,13 +279,11 @@ portfolioLinks.onclick = function (e) {
         portfolioPage.children[1].style.opacity = '0';
         portfolioPage.children[2].style.opacity = '0';
 
-
-
-
         setTimeout(function () {
             hide(portfolioPage.children[1])
             hide(portfolioPage.children[2])
             show(jobDetail)
+            carouselWidth()
 
         }, 350)
         setTimeout(function () {
@@ -265,8 +291,6 @@ portfolioLinks.onclick = function (e) {
             jobDetail.style.opacity = '1'
         }, 400)
     }
-
-
 }
 jobDetail.children[0].onclick = function (e) {
     jobDetail.style.opacity = '0';
@@ -288,18 +312,16 @@ jobDetail.children[0].onclick = function (e) {
 var homeArrow = setInterval(homeArrow2, 5000)
 // If mouse enter the arrows, stops
 homeDownArrow.addEventListener('mouseenter', function () {
-    console.log('enter')
     clearInterval(homeArrow)
 })
 //If mouse leaves the arrows, continue
 homeDownArrow.addEventListener('mouseleave', function () {
-    console.log('leave')
     setTimeout(homeArrow2, 1000)
     homeArrow = setInterval(homeArrow2, 5000) // creates interval again
 })
 
 function homeArrow2() {
-    x = homeDownArrow
+    var x = homeDownArrow
     x.style.height = '130px'
     x.style.transition = '.4s '
     setTimeout(function () {
@@ -336,8 +358,7 @@ document.getElementById('navButton').onclick = function (e) {
     } else {
         var y = e.target.children[0]
     }
-    console.log(y)
-    console.log(x.classList[1])
+
     if (x.classList[1] == 'open') {
         y.classList.remove('fa-xmark')
         y.classList.add('fa-bars')
@@ -347,4 +368,46 @@ document.getElementById('navButton').onclick = function (e) {
         y.classList.add('fa-xmark')
         y.classList.remove('fa-bars')
     }
+}
+function createImg(x) {
+    for (i = 1; i < 5; i++) {
+        var y = x + i + '.png'
+        var imgName = checkFile(y)
+
+        if (imgName) {
+            img = document.createElement('img')
+            img.setAttribute('src', y)
+            carousel.appendChild(img)
+        }
+
+    }
+    createI()
+}
+function createI(){
+    console.log(carousel.children.length)
+    for(i=0;i<carousel.children.length;i++){
+        icon = document.createElement('i');
+        icon.setAttribute('class','fa-solid fa-circle off')
+        icon.setAttribute('number',i)
+        pointer.appendChild(icon)
+    }
+    pointer.children[0].classList.remove('off')
+    pointer.children[0].classList.add('on')
+}
+function checkFile(x) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('HEAD', x, false);
+    xhr.send();
+    if (xhr.status == "404") {
+        return false;
+    } else {
+        return true;
+    }
+
+}
+function carouselWidth() {
+    var h = document.getElementById('jobDetailPicture').offsetWidth / 2 + 15
+
+    console.log(document.getElementById('jobDetailPicture'))
+    document.getElementById('jobDetailPicture').style.height = `${h}px`
 }
