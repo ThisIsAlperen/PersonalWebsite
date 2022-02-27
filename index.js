@@ -15,11 +15,15 @@ const job = document.getElementById('homeJob').children[0]
 // this is for the changing job with css
 const job2 = document.getElementById('changeJob')
 const jobDetail = document.getElementById('jobDetail')
-const carousel = document.getElementById('portfolioLinks')
+const portfolioLinks = document.getElementById('portfolioLinks')
+
+const carousel = document.getElementById('carousel')
 const carouselLeft = document.getElementsByClassName('fa-angle-left')
 const carouselRight = document.getElementsByClassName('fa-angle-right')
-document.getElementById('homeLink').classList.add('hover')
 
+let slide = 0;
+
+// for each method can be used for html collections
 NodeList.prototype.forEach = HTMLCollection.prototype.forEach = Array.prototype.forEach;
 
 function hide(x) {
@@ -28,19 +32,15 @@ function hide(x) {
 function show(x) {
     x.classList.remove('hide')
 }
-myFunction()
 
-function myFunction() {
-    Scroll.scrollIntoView({ behavior: "smooth" })
-    
-}
-
+// Uppercase the titles
 document.getElementsByTagName('h2').forEach(child => {
     child.innerText = child.innerText.toUpperCase()
 })
 document.getElementsByTagName('h3').forEach(child => {
     child.innerText = child.innerText.toUpperCase()
 })
+// scroll to the about page when the arrow in the homepage clicked
 homePage.children[2].onclick = function (e) {
     $('html,main').animate({ //animate element that has scroll
         scrollTop: 716 //for scrolling
@@ -48,6 +48,7 @@ homePage.children[2].onclick = function (e) {
     }, 100);
     e.preventDefault()
 }
+// scroll to the page when navbar link clicked
 ScrollLinks.onclick = function (e) {
     var x = e.target.getAttribute('href')
     var y = document.getElementById(x)
@@ -58,18 +59,28 @@ ScrollLinks.onclick = function (e) {
     }, 100);
     e.preventDefault()
 }
-
-
+// remove the navbar class when resize
+window.addEventListener('resize', function () {
+    var x = document.getElementsByTagName('nav')[0]
+    var y = this.document.getElementById('navButton').children[0]
+    if (this.window.innerWidth >= 992) {
+        y.classList.remove('fa-xmark')
+        y.classList.add('fa-bars')
+        x.classList.remove('open')
+    }
+    Slide()
+})
+// hover the navbar links when scroll
 window.addEventListener("scroll", function () {
-    
+
     ScrollLinks.children.forEach(child => {
         child.children[0].classList = ''
     });
     ScrollLinks.children.forEach(child => {
         child.classList = ''
     });
-    
-    
+
+
     if (this.window.pageYOffset < aboutPage.offsetTop - 200) {
 
         document.getElementById('homeLink').classList.add('hover')
@@ -82,7 +93,7 @@ window.addEventListener("scroll", function () {
         document.getElementById('aboutLink').parentElement.classList.add('hover')
 
     }
-    if (this.window.pageYOffset > portfolioPage.offsetTop - 200 && this.window.pageYOffset< contactPage.offsetTop - 200) {
+    if (this.window.pageYOffset > portfolioPage.offsetTop - 200 && this.window.pageYOffset < contactPage.offsetTop - 200) {
         document.getElementById('portfolioLink').classList.add('hover')
         document.getElementById('portfolioLink').parentElement.classList.add('hover')
 
@@ -157,25 +168,28 @@ function clearJob(x) {
 // *********^^^^ This Part is for the changing the job^^^^^********//
 //left - right carousel
 
-// carouselLeft[0].onclick = function () {
-//     var x = carousel.offsetLeft
-
-//     console.log(x)
-//     if (x < 0) {
-//         x = x + 570
-//         console.log(x)
-
-//         carousel.style.left = x + 'px'
-//     }
-// }
-// carouselRight[0].onclick = function () {
-//     var x = carousel.offsetLeft
-
-//     if (x >= -570) {
-//         x = x - 570
-//         carousel.style.left = x + 'px'
-//     }
-// }
+carouselLeft[0].onclick = function () {
+    if (slide > 0) {
+        Slide(-1)
+    }
+}
+carouselRight[0].onclick = function () {
+    if (slide < 2) {
+        Slide(1)
+    }
+}
+function Slide(x) {
+    var y = carousel.children[slide].offsetWidth
+    if (x == undefined) {
+        x = 0;
+    }
+    slide = slide + x
+    console.log(slide)
+    console.log(y)
+   
+    //carousel.style.left = 
+    carousel.style.left = `-${y*slide}px`
+}
 // This is the new part for the changing the job
 var i;
 setInterval(function () {
@@ -207,8 +221,8 @@ setInterval(function () {
     }
 }, 2500)
 //****************************************************/
-
-carousel.onclick = function (e) {
+// open the details of a portfolio item
+portfolioLinks.onclick = function (e) {
     console.log(e.target)
     e.preventDefault()
     x = e.target.getAttribute('href')
@@ -236,9 +250,9 @@ carousel.onclick = function (e) {
     if (x !== null) {//to make sure that user clicked to a picture not any point (will be changed)
         portfolioPage.children[1].style.opacity = '0';
         portfolioPage.children[2].style.opacity = '0';
-        document.getElementById('jobDetailPicture').style.backgroundImage = `url(${x}.png)`
 
-            
+
+
 
         setTimeout(function () {
             hide(portfolioPage.children[1])
@@ -315,14 +329,22 @@ function homeArrow2() {
 
 document.getElementById('navButton').onclick = function (e) {
     var x = document.getElementsByTagName('nav')[0]
+
+
+    if (e.target.classList != '') {
+        var y = e.target
+    } else {
+        var y = e.target.children[0]
+    }
+    console.log(y)
     console.log(x.classList[1])
     if (x.classList[1] == 'open') {
-
+        y.classList.remove('fa-xmark')
+        y.classList.add('fa-bars')
         x.classList.remove('open')
     } else {
         x.classList.add('open')
-    
+        y.classList.add('fa-xmark')
+        y.classList.remove('fa-bars')
     }
-
-
 }

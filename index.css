@@ -55,6 +55,7 @@ h2 {
     font-size: 8rem;
     padding-bottom: 20px;
     color: #222222;
+    padding-left: 10px;
 }
 
 h3 {
@@ -63,6 +64,7 @@ h3 {
     font-size: 6rem;
     margin-bottom: 20px;
     width: 100%;
+
 }
 
 /* <<<<<<<<<<<<<<<<---RESPONSIVE--->>>>>>>>>>>> */
@@ -85,9 +87,9 @@ h3 {
         max-width: 1050px !important;
     }
 
-   
-
-
+    #jobDetailPicture {
+        min-width: 350px;
+    }
 }
 
 /* <<<<<<<<<<<<<<<<---NAVBAR--->>>>>>>>>>>> */
@@ -169,14 +171,26 @@ main {
     transition: 1s;
     opacity: 0;
     z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ddd;
+}
+#navButton i{
+    font-size: 6rem;
+
 }
 
+
+#navButton:hover {
+    cursor: pointer;
+}
 #navButton:hover {
     cursor: pointer;
 }
 
 #scroll section:nth-child(even) {
-    background-color: rgb(240, 240, 240);
+    background-color: #f6f6f6;
 }
 
 #scroll section:nth-child(odd) {
@@ -313,7 +327,7 @@ section {
 
 #aboutDetails img {
     width: 100%;
-    padding: 0 10px;
+    padding: 10px;
 }
 
 #aboutMe {
@@ -354,11 +368,12 @@ section {
     font-size: 10rem;
     right: 10px;
 }
+
 /* ========================================= */
 #jobDetail {
     transition: .3s;
     opacity: 0;
-    padding: 40px;
+
 }
 
 #specificJob {
@@ -367,30 +382,71 @@ section {
     flex-wrap: wrap;
 }
 
+#specificJob h3 {
+    padding-left: 10px;
+}
+
 #jobDetailPicture {
     min-height: 200px;
     height: auto;
     position: relative;
     overflow: hidden;
-  height: 240px;
-
+    max-width: 600px;
+    margin: auto;
+    position: relative;
 }
-#carousel{
+
+#jobDetailPicture i {
+    position: absolute;
+    width: 20px;
+    height: 40px;
+    transition: .5s;
+    width: 20px;
     display: flex;
-    width: 500px;
+    align-items: center;
+    z-index: 10;
+    justify-content: center;
+    margin: 10px 0;
+    border-radius:20px ;
+    transform: translate(0, -50%);
+    top: 50%;
+    font-size: 6rem;
+}
+
+#jobDetailPicture .fa-angle-left {
+    left: 10px;
+}
+
+#jobDetailPicture .fa-angle-right {
+    right: 14px;
+}
+
+#jobDetailPicture i:hover {
+    width: 40px;
+    color: #eee;
+    cursor: pointer;
+}
+
+ 
+
+#carousel {
+    display: flex;
+    width: 300%;
     flex-wrap: nowrap;
     flex: content;
     transition: 2s;
     position: absolute;
-    left: -500px;
-    
+    left: 0;
+
+
 }
-#carousel img{
-    width: 500px;
+
+#carousel img {
+    width: 33%;
     min-height: 200px;
     height: auto;
-    border: 10px solid #fff;
-    
+    padding: 10px;
+
 }
 
 
@@ -401,7 +457,13 @@ section {
     justify-content: space-between;
     height: 100px;
     margin-top: 20px;
+    padding: 0 10px;
 }
+
+#jobDetailText {
+    padding: 0 10px;
+}
+
 /* ///////////////////////////////////////////////////////// */
 
 #portfolioLinks {
@@ -422,9 +484,12 @@ section {
     transition: .5s;
     border: 10px solid transparent;
     position: relative;
+
 }
-#portfolioLinks li img{
+
+#portfolioLinks li img {
     width: 100%;
+    outline: #ddd 2px solid;
 }
 
 #portfolioLinks:hover {
@@ -467,8 +532,13 @@ section {
     flex-wrap: wrap;
 }
 
+#skillsDetails p {
+    padding: 0 10px;
+}
+
 #skillsPage ul {
     height: 70%;
+    padding: 0 10px;
 }
 
 #skillsPage li {
@@ -485,6 +555,7 @@ section {
 }
 
 #skillsPage li p {
+
     margin: 15px 0;
     width: 100%;
     border: 2px black solid;
@@ -529,8 +600,7 @@ section {
 }
 
 #contactInfo {
-
-    padding: 10px;
+    padding: 0 10px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -551,11 +621,10 @@ section {
 
 
 #sendMessage {
-
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 10px;
+    padding: 0 10px;
     align-items: center;
     height: 400px;
 }
@@ -596,6 +665,5 @@ footer {
 }
 
 .open {
-    width: 100%;
-    max-width: 576px;
+    width: 374px;
 }
