@@ -34,7 +34,8 @@ function hide(x) {
 function show(x) {
     x.classList.remove('hide')
 }
-carousel.innerHTML = ''
+carousel.innerHTML = '';
+
 // Uppercase the titles
 document.getElementsByTagName('h2').forEach(child => {
     child.innerText = child.innerText.toUpperCase()
@@ -187,10 +188,10 @@ carouselRight[0].onclick = function () {
         Slide(1)
     }
 }
-pointer.onclick = function(e){
+pointer.onclick = function (e) {
     e.preventDefault()
-   
-    if(e.target.classList.length > 0){
+
+    if (e.target.classList.length > 0) {
         var x = Number(e.target.getAttribute('number'))
         console.log(x)
     }
@@ -198,13 +199,13 @@ pointer.onclick = function(e){
     Slide()
 }
 function Slide(x) {
-    
+
     var y = carousel.children[slide].offsetWidth
     if (x == undefined) {
         x = 0;
     }
     slide = slide + x
-    pointer.children.forEach(function(child){
+    pointer.children.forEach(function (child) {
         child.classList.remove('on')
         child.classList.add('off')
     })
@@ -216,37 +217,44 @@ function Slide(x) {
 // This is the new part for the changing the job
 var i;
 setInterval(function () {
-
+    
     if (i == undefined) {
         i = 0
     }
-    job2.style.width = '5px'
+    
+    job2.style.width = '2px'
     setTimeout(function () {
+     
         if (i == 0) {
             hide(job2.children[0].children[0])
-            job2.style.width = '133px'
+            job2.style.width = '145px'
             show(job2.children[0].children[1])
         }
         if (i == 1) {
             hide(job2.children[0].children[1])
-            job2.style.width = '100px'
+            job2.style.width = '107px'
             show(job2.children[0].children[2])
         }
         if (i == 2) {
             hide(job2.children[0].children[2])
-            job2.style.width = '147px'
+            job2.style.width = '155px'
             show(job2.children[0].children[0])
         }
+              
         i++
+        if (i > 2) {
+            i = 0
+        }
+        
     }, 800)
-    if (i > 2) {
-        i = 0
-    }
+
+    
+   
 }, 2500)
 //****************************************************/
 // open the details of a portfolio item
 portfolioLinks.onclick = function (e) {
-
+    pointer.innerHTML = ''
     carousel.innerHTML = ''
     e.preventDefault()
 
@@ -383,12 +391,12 @@ function createImg(x) {
     }
     createI()
 }
-function createI(){
+function createI() {
     console.log(carousel.children.length)
-    for(i=0;i<carousel.children.length;i++){
+    for (i = 0; i < carousel.children.length; i++) {
         icon = document.createElement('i');
-        icon.setAttribute('class','fa-solid fa-circle off')
-        icon.setAttribute('number',i)
+        icon.setAttribute('class', 'fa-solid fa-circle off')
+        icon.setAttribute('number', i)
         pointer.appendChild(icon)
     }
     pointer.children[0].classList.remove('off')
