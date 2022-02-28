@@ -27,13 +27,23 @@ let slide = 0;
 
 // for each method can be used for html collections
 NodeList.prototype.forEach = HTMLCollection.prototype.forEach = Array.prototype.forEach;
+document.getElementById('scroll').children.forEach(function (child) {
+    child.children.forEach(function (e) {
+        e.style.opacity = '0'
+        e.style.paddingTop = '10px'
+    })
+})
 
 function hide(x) {
     x.classList.add('hide')
 }
 function show(x) {
     x.classList.remove('hide')
-}
+} 
+homePage.children.forEach(function (child) {
+    child.style.opacity = '1'
+    child.style.paddingTop = '0'
+})
 carousel.innerHTML = '';
 
 // Uppercase the titles
@@ -79,8 +89,25 @@ window.addEventListener('resize', function () {
 
 
 })
+function Fade() {
+    var x = this.window.innerHeight + this.window.pageYOffset + -200;
+    document.getElementById('scroll').children.forEach(function (child) {
+        console.log(x)
+        console.log(child.offsetTop)
+        if (child.offsetTop < x) {
+            child.children.forEach(function (e) {
+                e.style.transition = '.6s'
+                e.style.opacity = '1'
+                console.log(this.window.getComputedStyle(e).paddingTop)
+                //Number(this.window.getComputedStyle(e).padding)
+                e.style.paddingTop = '0px'
+            })
+        }
+    })
+}
 // hover the navbar links when scroll
 window.addEventListener("scroll", function () {
+    Fade()
     carouselWidth()
     ScrollLinks.children.forEach(child => {
         child.children[0].classList = ''
@@ -193,7 +220,7 @@ pointer.onclick = function (e) {
 
     if (e.target.classList.length > 0) {
         var x = Number(e.target.getAttribute('number'))
-        console.log(x)
+
     }
     slide = x;
     Slide()
@@ -217,14 +244,14 @@ function Slide(x) {
 // This is the new part for the changing the job
 var i;
 setInterval(function () {
-    
+
     if (i == undefined) {
         i = 0
     }
-    
+
     job2.style.width = '2px'
     setTimeout(function () {
-     
+
         if (i == 0) {
             hide(job2.children[0].children[0])
             job2.style.width = '145px'
@@ -240,16 +267,16 @@ setInterval(function () {
             job2.style.width = '155px'
             show(job2.children[0].children[0])
         }
-              
+
         i++
         if (i > 2) {
             i = 0
         }
-        
+
     }, 800)
 
-    
-   
+
+
 }, 2500)
 //****************************************************/
 // open the details of a portfolio item
@@ -363,11 +390,13 @@ document.getElementById('navButton').onclick = function (e) {
 
     if (e.target.classList != '') {
         var y = e.target
+
     } else {
         var y = e.target.children[0]
-    }
 
-    if (x.classList[1] == 'open') {
+    }
+    console.log(y)
+    if (x.classList[2] == 'open') {
         y.classList.remove('fa-xmark')
         y.classList.add('fa-bars')
         x.classList.remove('open')
@@ -392,7 +421,7 @@ function createImg(x) {
     createI()
 }
 function createI() {
-    console.log(carousel.children.length)
+
     for (i = 0; i < carousel.children.length; i++) {
         icon = document.createElement('i');
         icon.setAttribute('class', 'fa-solid fa-circle off')
@@ -416,6 +445,6 @@ function checkFile(x) {
 function carouselWidth() {
     var h = document.getElementById('jobDetailPicture').offsetWidth / 2 + 15
 
-    console.log(document.getElementById('jobDetailPicture'))
+
     document.getElementById('jobDetailPicture').style.height = `${h}px`
 }

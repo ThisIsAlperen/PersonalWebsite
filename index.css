@@ -23,6 +23,12 @@ body {
     font-family: 'Syne Mono', monospace;
 }
 
+img {
+
+    box-shadow: 3px 3px 3px rgb(136, 136, 136,0.4);
+
+}
+
 li {
     list-style: none;
 }
@@ -53,7 +59,8 @@ button {
     background-color: #fff;
     border: 2px solid #222222;
 }
-button:hover{
+
+button:hover {
     background-color: #222222;
     color: #fff;
 }
@@ -141,6 +148,7 @@ nav {
     width: 100%;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
+    box-shadow: none;
 }
 
 /* Github link at the bottom of the navbar*/
@@ -171,7 +179,7 @@ nav li {
 }
 
 .hover {
-   
+
     color: #eee;
 }
 
@@ -267,12 +275,14 @@ section {
     height: 100%;
     position: absolute;
     z-index: 5;
+
 }
 
 #homeProfile {
     object-fit: cover;
     width: 250px;
     margin-bottom: 20px;
+    box-shadow: none;
 }
 
 #homeJob {
@@ -359,10 +369,12 @@ section {
     justify-content: space-between;
     flex-wrap: wrap;
 }
-
+#aboutImg{
+    padding: 0 10px;
+}
 #aboutDetails img {
     width: 100%;
-    padding: 0 10px;
+   
     margin-bottom: 20px;
 }
 
@@ -385,9 +397,11 @@ section {
     display: inline-block;
     padding: 10px 0;
 }
-#aboutDetails button{
+
+#aboutDetails button {
     width: 170px;
 }
+
 /* <<<<<<<<<<<<<<<<---PORTFOLIOPAGE--->>>>>>>>>>>> */
 #portfolioPage {
     position: relative;
@@ -725,19 +739,22 @@ footer {
     flex-wrap: wrap;
 }
 
-#footerLogo img{
+#footerLogo img {
     object-fit: cover;
     width: 150px;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
-    
+    box-shadow: none;
+
 }
-#footerLinks{
+
+#footerLinks {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-#footerLinks li{
+
+#footerLinks li {
     padding: 0 10px;
 }
 
