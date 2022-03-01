@@ -297,8 +297,14 @@ portfolioLinks.onclick = function (e) {
         } else {
             child.classList.add('hide')
         }
-
     });
+    document.getElementById('jobDetailLink').children.forEach(function(child){
+        if (child.getAttribute('name') == x) {
+            child.classList.remove('hide')
+        } else {
+            child.classList.add('hide')
+        }
+    })
     // get the specific feature list by name
     document.getElementById('jobDetailFeatures').children.forEach(child => {
 
