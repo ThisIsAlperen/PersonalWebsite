@@ -225,6 +225,7 @@ pointer.onclick = function (e) {
     slide = x;
     Slide()
 }
+
 function Slide(x) {
 
     var y = carousel.children[slide].offsetWidth
@@ -319,7 +320,7 @@ portfolioLinks.onclick = function (e) {
     if (x !== null) {//to make sure that user clicked to a picture not any point (will be changed)
         portfolioPage.children[1].style.opacity = '0';
         portfolioPage.children[2].style.opacity = '0';
-
+        
         setTimeout(function () {
             hide(portfolioPage.children[1])
             hide(portfolioPage.children[2])
@@ -332,6 +333,7 @@ portfolioLinks.onclick = function (e) {
             jobDetail.style.opacity = '1'
         }, 400)
     }
+
 }
 jobDetail.children[0].onclick = function (e) {
     jobDetail.style.opacity = '0';
