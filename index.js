@@ -23,6 +23,13 @@ const carouselRight = document.getElementsByClassName('fa-angle-right')
 
 const pointer = document.getElementById('pointer')
 let slide = 0;
+let messageNumber = 0;
+const sendMessage = document.getElementById('sendMessage')
+
+const Name = sendMessage.children[1]
+const email = sendMessage.children[2]
+const message = sendMessage.children[3]
+const sendMessageButton = sendMessage.children[4]
 
 
 // for each method can be used for html collections
@@ -39,7 +46,7 @@ function hide(x) {
 }
 function show(x) {
     x.classList.remove('hide')
-} 
+}
 homePage.children.forEach(function (child) {
     child.style.opacity = '1'
     child.style.paddingTop = '0'
@@ -92,13 +99,12 @@ window.addEventListener('resize', function () {
 function Fade() {
     var x = this.window.innerHeight + this.window.pageYOffset + -200;
     document.getElementById('scroll').children.forEach(function (child) {
-        console.log(x)
-        console.log(child.offsetTop)
+
         if (child.offsetTop < x) {
             child.children.forEach(function (e) {
                 e.style.transition = '.6s'
                 e.style.opacity = '1'
-                console.log(this.window.getComputedStyle(e).paddingTop)
+
                 //Number(this.window.getComputedStyle(e).padding)
                 e.style.paddingTop = '0px'
             })
@@ -299,7 +305,7 @@ portfolioLinks.onclick = function (e) {
             child.classList.add('hide')
         }
     });
-    document.getElementById('jobDetailLink').children.forEach(function(child){
+    document.getElementById('jobDetailLink').children.forEach(function (child) {
         if (child.getAttribute('name') == x) {
             child.classList.remove('hide')
         } else {
@@ -320,7 +326,7 @@ portfolioLinks.onclick = function (e) {
     if (x !== null) {//to make sure that user clicked to a picture not any point (will be changed)
         portfolioPage.children[1].style.opacity = '0';
         portfolioPage.children[2].style.opacity = '0';
-        
+
         setTimeout(function () {
             hide(portfolioPage.children[1])
             hide(portfolioPage.children[2])
@@ -403,7 +409,7 @@ document.getElementById('navButton').onclick = function (e) {
         var y = e.target.children[0]
 
     }
-    console.log(y)
+
     if (x.classList[2] == 'open') {
         y.classList.remove('fa-xmark')
         y.classList.add('fa-bars')
@@ -456,3 +462,32 @@ function carouselWidth() {
 
     document.getElementById('jobDetailPicture').style.height = `${h}px`
 }
+
+sendMessageButton.onclick = function (e) {
+    e.preventDefault()
+    messageNumber++
+    var id = Name.value;
+    var content = message.value;
+    writeToFile(id, content);
+   
+}
+
+
+// import express (after npm install express)
+// const {express} = require(['express']);
+// import express from 'express';
+// // create new express app and save it as "app"
+// const app = express();
+
+// // server configuration
+// const PORT = 8080;
+
+// // create a route for the app
+// app.get('/', (req, res) => {
+//   res.send('Hello World');
+// });
+
+// // make the server listen to requests
+// app.listen(PORT, () => {
+//   console.log(`Server running at: http://localhost:${PORT}/`);
+// });
