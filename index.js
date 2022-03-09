@@ -9,6 +9,9 @@ const ScrollLinks = document.getElementById('scrollLinks')
 const Main = document.querySelector('main')
 const homeDownArrow = document.getElementById('homeDownArrow')
 
+const frame = document.getElementById('frame')
+const jobDetailLink = document.getElementById('jobDetailLink')
+
 // this is for the changing job with js
 const job = document.getElementById('homeJob').children[0]
 
@@ -472,6 +475,11 @@ sendMessageButton.onclick = function (e) {
    
 }
 
+function gamePlay(){
+    console.log(this)
+    frame.classList.remove('hide')
+    frame.style.height = '300px'
+}
 
 // import express (after npm install express)
 // const {express} = require(['express']);
