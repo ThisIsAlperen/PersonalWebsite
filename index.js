@@ -346,7 +346,9 @@ portfolioLinks.onclick = function (e) {
 }
 jobDetail.children[0].onclick = function (e) {
     jobDetail.style.opacity = '0';
-
+    frame.classList.add('hide')
+    frame.style.opacity = '0'
+    frame.style.height = '0px'
     setTimeout(function () {
         show(portfolioPage.children[1])
         show(portfolioPage.children[2])
@@ -472,13 +474,17 @@ sendMessageButton.onclick = function (e) {
     var id = Name.value;
     var content = message.value;
     writeToFile(id, content);
-   
+
 }
 
-function gamePlay(){
+function gamePlay() {
     console.log(this)
     frame.classList.remove('hide')
-    frame.style.height = '300px'
+    var h = frame.offsetWidth*9/16
+    setTimeout(function () {
+        frame.style.opacity = '1'
+        frame.style.height = h+'px'
+    }, 100)
 }
 
 // import express (after npm install express)
